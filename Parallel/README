@@ -1,0 +1,43 @@
+Nume: Andronic Dragos Sebastian
+Grupa: 336CC
+
+Idee generala: Pornesc toate thread-urile, primele thread-uri
+cele de Mapper vor citi din fiesere pana la bariera in timp ce
+celelalte thread-uri Reducer nu vor executa nicio operatie.
+Dupa bariera thread-urile Reducer selecteaza datele corespunzatoare
+pentru afisarea in fisierele de output in timp ce thread-urile Mapper
+nu executa nicio operatie.
+
+Am folosit o bariera si un mutex declarate global.
+
+Structura TFiles: retin un vector nume de fisiere,
+cate fisiere am in total si cate fisiere au mai ramas de procesat.
+
+Structura MapRed: retin id-ul thread-ului, numarul de mapperi si reduceri,
+adresa unei structuri TFiles (deoarece toate thread-urile au acces la 
+aceasta structura) si adresa unui tip mapExponents (map de map de vectori de int
+structura in care retin numere in functie de ce mapper il proceseaza si
+in functie de exponent).
+
+Functia sortFiles: sortare pentru fisierele de input in functie de 
+dimensiune.
+
+Functia fast_pow: ridicarea la putere in O(logN).
+
+Functia binarySearch: intoarce 1 daca gaseste match intre exponent
+si numarul de verificat si 0 altfel.
+
+Functia f: ia datele transmise ca argument, verifica id-ul thread-ului
+(cele mai mici decat numar-ul de mapperi sunt primele) si executa operatiile
+specifice.
+
+Mapper: cat timp mai sunt fisiere de citit (mutex pe numarul ramas de fisiere)
+le va retine in vectorul tmp, ca apoi sa faca cautare binara in functie de 
+exponent. Daca exista match o va adauga in map.
+
+Reducer: ia toate valorile din map (valorile cu acelasi exponent) si le adauga intr-un
+unordered_set (am folosit set pentru ca nu se repeta valorile) apoi adaug numarul
+de elemente retinute in fisierle corespunzatoare.
+
+main: preiau argumentele, sortez lista de fisiere initiale in functie de 
+dimensiune, creez si termin executia thread-urilor.

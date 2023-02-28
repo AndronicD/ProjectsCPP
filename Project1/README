@@ -1,0 +1,21 @@
+Nume: Andronic Dragos Sebastian
+Grupa: 324CD
+
+Problema 1: Construisc doua grafuri g (cel pe care am muchiile orientate
+ca la citire) si g2 (cel pe care am muchiile orientate si in sens invers). 
+In vectorul nodComponenta (si vectorul vizitat) pastrez numarul componentei
+conexe din care face parte fiecare nod (in g2), in vectorul nrElemCiclu pastrez
+cate noduri are fiecare componenta conexa, iar in vectorul ciclu pastrez
+daca componenta conexa are un ciclu sau nu (in g). La final daca o componenta conexa
+are un ciclu adaug numarul de noduri din ciclu, altfel adaug numarul de noduri - 1.
+
+Sursa: https://www.geeksforgeeks.org/strongly-connected-components/
+Sursa: https://www.geeksforgeeks.org/detect-cycle-in-a-graph/
+
+Problema 3: initializez valorile costurilor arcelor intr-o matrice de adiacenta
+cu valoarea INF, apoi citesc valorile costurilor arcelor, folosindu-ma de 
+algoritmul Floyd-Warshall calculez costul distantelor intre noduri, astfel
+pe diagonala matricei de adiacenta va aparea costul de la nodul curent la el
+insusi. Afisez valoarea minima a costurilor de pe diagonala matricei.
+
+Sursa: https://www.geeksforgeeks.org/floyd-warshall-algorithm-dp-16/
